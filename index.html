@@ -16,6 +16,8 @@
     <script src="https://code.jquery.com/jquery-3.4.1.js"
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
 </head>
 
 <body>
@@ -37,8 +39,7 @@
                     <th scope="col">Time until Arrival</th>
                 </tr>
             </thead>
-            <tbody>
-
+            <tbody id="displayBody">
             </tbody>
 
         </table>
@@ -67,7 +68,7 @@
             </div>
 
             <button type="submit" class="btn btn-primary" id="addTrain">Submit</button>
-            
+
         </form>
 
     </div>
