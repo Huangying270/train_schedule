@@ -17,7 +17,6 @@ $(document).ready(function () {
     $("#addTrain").on("click", function(event){
 
         event.preventDefault();
-        console.log(database);
 
         var trainName = "";
         var destination = "";
@@ -47,18 +46,31 @@ $(document).ready(function () {
 
         var sv = snapshot.val();
 
+        // use moment.js for time
+        var startTime = moment(newFirstTrain, "hh:mm").subtract(1, "years");
+
+        var timeNow = moment();
+
+        var timeDifference = moment().diff(moment(startTime), "minutes");
+
+        var timeRemainder = timeDifference % newInterval;
+
+        var minUntilTrain = newInterval - timeRemainder;
+
+        var nextTrain = moment().add(minUntilTrain, "minutes");
+
+        var catchTrain = moment(nextTrain).format("HH:mm");
+
         var newTrainName = $("<td>");
         newTrainName.text(sv.trainName);
         var newDestination = $("<td>");
         newDestination.text(sv.destination);
         var newFirstTrain = $("<td>");
-        newFirstTrain.text(sv.firstTrain);
+        newFirstTrain.text(sv.catchTrain);
         var newInterval = $("<td>");
-        newInterval.text(sv.interval);
+        newInterval.text(sv.minUntilTrain);
 
         var newRow = $("<tr>");
-
-        // use moment.js for time
 
 
         newRow.append(newTrainName, newDestination, newFirstTrain, newInterval);
