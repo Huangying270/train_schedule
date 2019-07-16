@@ -42,6 +42,32 @@ $(document).ready(function () {
 
     });
 
+    database.ref().on("child_added", function(snapshot) {
+
+        var sv = snapshot.val();
+
+        var newTrainName = sv.trainName;
+        var newDestination = sv.destination;
+        var newFirstTrain = sv.firstTrain;
+        var newInterval = sv.interval;
+
+        var newRow = $("<tr>");
+
+        // use moment.js for time
+
+
+        newRow.append($("<td>") + newTrainName, $("<td>") + newDestination, $("<td>") + newFirstTrain, $("<td>") + newInterval);
+        $("#displayBody").append(newRow);
+
+        $("#trainName").val("");
+        $("#destination").val("");
+        $("#firstTrain").val("");
+        $("#interval").val("");
+        return;
+    },
+    function (errorObject) {
+        alert("Please fill out the form" + errorObject.code);
+    });
 
 
 })
