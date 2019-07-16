@@ -60,20 +60,23 @@ $(document).ready(function () {
         var nextTrain = moment().add(minUntilTrain, "minutes");
 
         var catchTrain = moment(nextTrain).format("HH:mm");
+        console.log(catchTrain);
 
         var newTrainName = $("<td>");
         newTrainName.text(sv.trainName);
         var newDestination = $("<td>");
         newDestination.text(sv.destination);
-        var newFirstTrain = $("<td>");
-        newFirstTrain.text(sv.catchTrain);
         var newInterval = $("<td>");
-        newInterval.text(sv.minUntilTrain);
+        newInterval.text(sv.newInterval);
+        var newFirstTrain = $("<td>");
+        newFirstTrain.text(catchTrain);
+        var nextTrain = $("<td>");
+        nextTrain.text(minUntilTrain);
 
         var newRow = $("<tr>");
 
 
-        newRow.append(newTrainName, newDestination, newFirstTrain, newInterval);
+        newRow.append(newTrainName, newDestination, newInterval, newFirstTrain, nextTrain);
         $("#displayBody").append(newRow);
 
         $("#trainName").val("");
