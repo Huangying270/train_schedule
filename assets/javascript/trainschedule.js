@@ -67,7 +67,7 @@ $(document).ready(function () {
         var newDestination = $("<td>");
         newDestination.text(sv.destination);
         var newInterval = $("<td>");
-        newInterval.text(sv.newInterval);
+        newInterval.text(moment(sv.newInterval).format("minutes"));
         var newFirstTrain = $("<td>");
         newFirstTrain.text(catchTrain);
         var nextTrain = $("<td>");
