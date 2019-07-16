@@ -10,13 +10,14 @@ $(document).ready(function () {
         appId: "1:922464549797:web:2dce58ab7f360ef9"
     };
 
-    firebase.initilizeApp(config);
+    firebase.initializeApp(config);
 
     var database = firebase.database();
 
     $("#addTrain").on("click", function(event){
 
         event.preventDefault();
+        console.log(database);
 
         var trainName = "";
         var destination = "";
@@ -46,17 +47,21 @@ $(document).ready(function () {
 
         var sv = snapshot.val();
 
-        var newTrainName = sv.trainName;
-        var newDestination = sv.destination;
-        var newFirstTrain = sv.firstTrain;
-        var newInterval = sv.interval;
+        var newTrainName = $("<td>");
+        newTrainName.text(sv.trainName);
+        var newDestination = $("<td>");
+        newDestination.text(sv.destination);
+        var newFirstTrain = $("<td>");
+        newFirstTrain.text(sv.firstTrain);
+        var newInterval = $("<td>");
+        newInterval.text(sv.interval);
 
         var newRow = $("<tr>");
 
         // use moment.js for time
 
 
-        newRow.append($("<td>") + newTrainName, $("<td>") + newDestination, $("<td>") + newFirstTrain, $("<td>") + newInterval);
+        newRow.append(newTrainName, newDestination, newFirstTrain, newInterval);
         $("#displayBody").append(newRow);
 
         $("#trainName").val("");
@@ -66,9 +71,8 @@ $(document).ready(function () {
         return;
     },
     function (errorObject) {
-        alert("Please fill out the form" + errorObject.code);
+        alert("Please fill out the form " + errorObject.code);
     });
-
 
 })
 
