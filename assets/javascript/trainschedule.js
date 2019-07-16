@@ -56,6 +56,7 @@ $(document).ready(function () {
         var timeRemainder = timeDifference % newInterval;
 
         var minUntilTrain = newInterval - timeRemainder;
+        console.log(minUntilTrain);
 
         var nextTrain = moment().add(minUntilTrain, "minutes");
 
@@ -67,7 +68,8 @@ $(document).ready(function () {
         var newDestination = $("<td>");
         newDestination.text(sv.destination);
         var newInterval = $("<td>");
-        newInterval.text(moment(sv.newInterval).format("minutes"));
+        newInterval.text(moment(sv.interval).format("minutes"));
+        console.log(newInterval);
         var newFirstTrain = $("<td>");
         newFirstTrain.text(catchTrain);
         var nextTrain = $("<td>");
